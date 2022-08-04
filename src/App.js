@@ -1,9 +1,9 @@
 import './App.css';
 import { useAuthUser, useLoginWithRedirect } from "@frontegg/react";
 import {contextOptions} from './'
-const logoutOauth = () => {
-    window.location.href = `${contextOptions.baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.origin}/oauth/callback`;
-};
+// const logoutOauth = () => {
+//     window.location.href = `${contextOptions.baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.origin}/oauth/callback`;
+// };
 
 const logout = () => {
     window.location.href = `${window.location.origin}/account/logout`;
