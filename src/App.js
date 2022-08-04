@@ -1,17 +1,21 @@
 import './App.css';
-import { useAuth, useLoginWithRedirect } from "@frontegg/react";
+import { useAuthUser, useLoginWithRedirect } from "@frontegg/react";
 import {contextOptions} from './'
-const logout = () => {
+const logoutOauth = () => {
     window.location.href = `${contextOptions.baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.origin}/oauth/callback`;
 };
 
-function App() {
-  const { user, isAuthenticated } = useAuth();
-  const loginWithRedirect = useLoginWithRedirect();
+const logout = () => {
+    window.location.href = `${window.location.origin}/account/logout`;
+};
 
+function App() {
+  const user  = useAuthUser();
+  const loginWithRedirect = useLoginWithRedirect();
+    console.log('user', user)
   return (
       <div className="App">
-        { isAuthenticated ? (
+        { user ? (
             <div>
               <div>
                 <img src={user?.profilePictureUrl} alt={user?.name}/>
@@ -21,6 +25,7 @@ function App() {
               </div>
               <div>
                 <button onClick={() => alert(user.accessToken)}>What is my access token?</button>
+              <button onClick={() => logout()}>Click me to logout</button>
               </div>
             </div>
         ) : (

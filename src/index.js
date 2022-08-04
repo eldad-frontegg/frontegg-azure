@@ -11,7 +11,7 @@ export const contextOptions = {
 };
 
 ReactDOM.render(
-    <FronteggProvider contextOptions={contextOptions} hostedLoginBox={true}>
+    <FronteggProvider contextOptions={contextOptions} hostedLoginBox={false}>
         <App />
     </FronteggProvider>,
     document.getElementById('root')
