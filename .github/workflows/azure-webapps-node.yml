@@ -59,7 +59,7 @@ jobs:
         echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
     - name: add staticwebapp.config.json
       run: |
-        echo '{ "navigationFallback": { "rewrite": "index.html", "exclude": ["/images/*.{png,jpg,gif}", "/css/*"] }}' >> build/staticwebapp.config.json
+        echo '{ "navigationFallback": { "rewrite": "index.html", "exclude": ["/images/*.{png,jpg,gif}", "/css/*"] }, "responseOverrides": {"404": {"rewrite": "/index.html","statusCode": 200}}' >> build/staticwebapp.config.json
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp
